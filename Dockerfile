@@ -1,4 +1,4 @@
-# Debian 8 with mmcentral
+# Debian 9 with mmcentral
 # Version 8.1.5
 FROM debian:latest
 LABEL vendor="Men & Mice" maintainer="<services@menandmice.com>" version="8.1.5-docker-beta" Description="Men & Mice Suite Central"
