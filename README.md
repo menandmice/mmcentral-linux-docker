@@ -1,5 +1,5 @@
-# Dockerfiles for building Men & Mice Suite Component-Container
+# Dockerfiles for building Men & Mice Suite Central on Linux
 
-Dockerfiles to build container for mmsuite components. For Linux and Window Server 2016.
+Dockerfiles to build container for mmsuite components. 
 
 
