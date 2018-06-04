@@ -1,11 +1,15 @@
-# Debian 9 with mmcentral
-# Version 8.1.5
-FROM debian:latest
-LABEL vendor="Men & Mice" maintainer="<services@menandmice.com>" version="8.1.5-docker-beta" Description="Men & Mice Suite Central"
+# CentOS latest with mmcentral
+# Version 8.2.8
+FROM centos:latest
+LABEL vendor="Men & Mice" maintainer="<services@menandmice.com>" version="8.2.8-docker-beta" Description="Men & Mice Suite Central running on CentOS Linux"
 
 # Update image
-RUN DEBIAN_FRONTEND=noninteractive apt update && apt -y upgrade && apt -y install python wget && apt-get clean
-RUN wget -q http://ftp.menandmice.com/pub/mmsuite/Linux/8.1.5/mmsuite-central-8.1.5.linux.x64.tgz && tar xvfz mmsuite-central*.tgz && (cd /mmsuite-central-* && ./install && cd / && rm -rf /mmsuite-central-* && pkill mmcentrald && rm /var/mmsuite/mmcentral/mmsuite.db* )
+RUN yum -y update && yum -y install python wget && yum clean all
+RUN wget -q http://download.menandmice.com/Linux/8.2.8/mmsuite-central-8.2.8.linux.x64.tgz && \
+    tar xvfz mmsuite-central-8.2.8.linux.x64.tgz && \
+    cp /mmsuite-central-*/linux/mmcentrald /usr/sbin/mmcentrald && \
+    mkdir -p /var/mmsuite/mmcentral && \
+    rm -rf /mmsuite-central-*
 VOLUME ["/var/mmsuite"]
 EXPOSE 1231
 WORKDIR /var/mmsuite
